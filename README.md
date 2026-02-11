@@ -123,4 +123,4 @@ Proprietary - Todos os direitos reservados
 
 ## 👥 Autor
 
-Seu Nome - [@seu-github](https://github.com/seu-usuario)
+Marcelo Zagonel Levek - [@seu-github](https://github.com/marlevek)
