@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard - OdontoInsight{% endblock %}
+
+{% block content %}
+<div class="container-fluid mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="mb-4">
+                <i class="bi bi-speedometer2"></i> Dashboard Financeiro
+            </h2>
+        </div>
+    </div>
+    
+    <!-- Cards de Métricas -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body">
+                    <h6 class="card-title">Receita Mensal</h6>
+                    <h3 class="mb-0">R$ 0,00</h3>
+                    <small>Este mês</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h6 class="card-title">Lucro Líquido</h6>
+                    <h3 class="mb-0">R$ 0,00</h3>
+                    <small>Margem: 0%</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card bg-warning text-white">
+                <div class="card-body">
+                    <h6 class="card-title">Desperdícios</h6>
+                    <h3 class="mb-0">R$ 0,00</h3>
+                    <small>Materiais e tempo</small>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-3">
+            <div class="card bg-danger text-white">
+                <div class="card-body">
+                    <h6 class="card-title">Risco de Churn</h6>
+                    <h3 class="mb-0">0</h3>
+                    <small>Pacientes em risco</small>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Alertas de IA -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-info text-white">
+                    <i class="bi bi-robot"></i> Alertas Inteligentes
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info mb-0">
+                        <i class="bi bi-info-circle"></i>
+                        Configure seu consultório para começar a receber análises preditivas e sugestões de otimização.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Gráficos -->
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <i class="bi bi-graph-up"></i> Receita vs Despesas
+                </div>
+                <div class="card-body">
+                    <div class="text-center text-muted py-5">
+                        <i class="bi bi-bar-chart display-1"></i>
+                        <p class="mt-3">Gráfico será exibido aqui</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-6 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <i class="bi bi-pie-chart"></i> Procedimentos por Lucratividade
+                </div>
+                <div class="card-body">
+                    <div class="text-center text-muted py-5">
+                        <i class="bi bi-pie-chart display-1"></i>
+                        <p class="mt-3">Gráfico será exibido aqui</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Ações Rápidas -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <i class="bi bi-lightning-charge"></i> Ações Rápidas
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-md-3 mb-3">
+                            <a href="#" class="btn btn-outline-primary w-100">
+                                <i class="bi bi-hospital d-block mb-2" style="font-size: 2rem;"></i>
+                                Cadastrar Consultório
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="#" class="btn btn-outline-success w-100">
+                                <i class="bi bi-clipboard-pulse d-block mb-2" style="font-size: 2rem;"></i>
+                                Novo Procedimento
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="#" class="btn btn-outline-info w-100">
+                                <i class="bi bi-graph-up d-block mb-2" style="font-size: 2rem;"></i>
+                                Ver Analytics
+                            </a>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <a href="#" class="btn btn-outline-warning w-100">
+                                <i class="bi bi-file-earmark-text d-block mb-2" style="font-size: 2rem;"></i>
+                                Gerar Relatório
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
