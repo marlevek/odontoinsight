@@ -43,8 +43,8 @@ Sistema inteligente de gestão financeira para consultórios odontológicos, com
 ## 📦 Ambientes
 
 - **Local:** Desenvolvimento com PostgreSQL local
-- **Staging:** `odontoinsight-staging.railway.app`
-- **Production:** `odontoinsight.com.br` (futuro)
+- **Staging:** `odontoinsight-staging.up.railway.app`
+- **Production:** `odontoinsight.com.br` (ou outro domínio final)
 
 ## 🔧 Setup Local
 
@@ -123,4 +123,4 @@ Proprietary - Todos os direitos reservados
 
 ## 👥 Autor
 
-Marcelo Zagonel Levek - [@marlevek](https://github.com/marlevek)
+Seu Nome - [@seu-github](https://github.com/seu-usuario)

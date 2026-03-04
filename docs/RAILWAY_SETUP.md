@@ -78,7 +78,7 @@ cd backend && gunicorn config.wsgi:application --bind 0.0.0.0:$PORT
 2. Novamente "Deploy from GitHub repo"
 3. Escolha o repositório `odontoinsight`
 4. Dê o nome: `odontoinsight-production`
-5. **IMPORTANTE:** Selecione a branch `main` ao invés de `staging`
+5. **IMPORTANTE:** Configure o auto-deploy pela branch `main`
 
 ### 2.2 Adicionar PostgreSQL
 1. Repita o processo: "+ New" → "Database" → "PostgreSQL"
@@ -245,9 +245,10 @@ git push origin main
 ```
 
 **Recomendação de Workflow:**
-1. Desenvolva em branch `develop` ou `feature/x`
-2. Merge para `staging` → testa no staging
-3. Se OK, merge `staging` → `main` → vai pra production
+1. Trabalhe e publique direto na branch `staging`
+2. Teste no Railway staging
+3. Se OK, faça merge de `staging` para `main`
+4. O Railway de production publica a branch `main`
 
 ---
 
