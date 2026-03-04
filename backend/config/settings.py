@@ -21,6 +21,17 @@ DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv())
 
+# Railway may healthcheck using public/internal hostnames that are not always
+# present in manual ALLOWED_HOSTS config. Add them defensively.
+railway_public_domain = config('RAILWAY_PUBLIC_DOMAIN', default='').strip()
+railway_private_domain = config('RAILWAY_PRIVATE_DOMAIN', default='').strip()
+if railway_public_domain and railway_public_domain not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(railway_public_domain)
+if railway_private_domain and railway_private_domain not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append(railway_private_domain)
+if '.railway.app' not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append('.railway.app')
+
 # CSRF trusted origins must include scheme. Build sensible defaults from
 # ALLOWED_HOSTS so Railway domains work without extra manual config.
 CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='', cast=Csv())
@@ -37,6 +48,8 @@ if not CSRF_TRUSTED_ORIGINS:
             csrf_trusted_origins.append(f'https://*{normalized_host}')
         else:
             csrf_trusted_origins.append(f'https://{normalized_host}')
+    if railway_public_domain:
+        csrf_trusted_origins.append(f'https://{railway_public_domain}')
     CSRF_TRUSTED_ORIGINS = csrf_trusted_origins
 
 # Application definition
