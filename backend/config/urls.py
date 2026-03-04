@@ -5,9 +5,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.http import HttpResponse
+
+def health(request):
+    return HttpResponse("ok")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('health/', health),
     
     # App URLs
     path('', include('apps.core.urls')),
