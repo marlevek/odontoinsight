@@ -3,7 +3,6 @@ Django settings for OdontoInsight project.
 Multi-environment configuration (local, staging, production)
 """
 
-import os
 from pathlib import Path
 import dj_database_url
 from decouple import config, Csv
@@ -21,6 +20,24 @@ SECRET_KEY = config('SECRET_KEY', default='django-insecure-dev-key-change-in-pro
 DEBUG = config('DEBUG', default=True, cast=bool)
 
 ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv())
+
+# CSRF trusted origins must include scheme. Build sensible defaults from
+# ALLOWED_HOSTS so Railway domains work without extra manual config.
+CSRF_TRUSTED_ORIGINS = config('CSRF_TRUSTED_ORIGINS', default='', cast=Csv())
+if not CSRF_TRUSTED_ORIGINS:
+    csrf_trusted_origins = []
+    for host in ALLOWED_HOSTS:
+        normalized_host = host.strip()
+        if not normalized_host:
+            continue
+        if normalized_host in {'localhost', '127.0.0.1'}:
+            csrf_trusted_origins.append(f'http://{normalized_host}')
+            continue
+        if normalized_host.startswith('.'):
+            csrf_trusted_origins.append(f'https://*{normalized_host}')
+        else:
+            csrf_trusted_origins.append(f'https://{normalized_host}')
+    CSRF_TRUSTED_ORIGINS = csrf_trusted_origins
 
 # Application definition
 INSTALLED_APPS = [
