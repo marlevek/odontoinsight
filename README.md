@@ -43,8 +43,8 @@ Sistema inteligente de gestão financeira para consultórios odontológicos, com
 ## 📦 Ambientes
 
 - **Local:** Desenvolvimento com PostgreSQL local
-- **Staging:** `odontoinsight-staging.railway.app`
-- **Production:** `odontoinsight.com.br` (futuro)
+- **Staging:** `odontoinsight-staging.up.railway.app`
+- **Production:** `odontoinsight.com.br` (ou outro domínio final)
 
 ## 🔧 Setup Local
 
@@ -124,3 +124,27 @@ Proprietary - Todos os direitos reservados
 ## 👥 Autor
 
 Marcelo Zagonel Levek - [@seu-github](https://github.com/marlevek)
+
+## Workflow de Branches
+
+Use apenas duas branches permanentes:
+
+- `staging`: homologação
+- `main`: produção
+
+Fluxo recomendado:
+
+```bash
+# Trabalhe em staging
+git checkout staging
+git add .
+git commit -m "feat: sua alteração"
+git push origin staging
+
+# Depois de validar no Railway staging
+git checkout main
+git merge staging
+git push origin main
+```
+
+O serviço atual do Railway pode ser reaproveitado como staging. Nesse caso, renomeie o projeto/serviço para algo como `odontoinsight-staging`, ajuste `DJANGO_ENV=staging` e configure o auto-deploy pela branch `staging`.

@@ -43,10 +43,6 @@ git push -u origin main
 git checkout -b staging
 git push -u origin staging
 
-# Crie branch develop
-git checkout -b develop
-git push -u origin develop
-
 # Volte para main
 git checkout main
 ```
@@ -180,29 +176,23 @@ Repita o processo do staging, mas:
 ```bash
 # Estrutura de branches recomendada:
 
-# main = produção (NUNCA mexa diretamente)
-# staging = testes pré-produção
-# develop = desenvolvimento principal
-# feature/x = funcionalidades específicas
+# main = produção (recebe apenas código validado)
+# staging = homologação (branch de trabalho e testes)
 
 # Exemplo de workflow:
-git checkout develop
-git checkout -b feature/criar-modelo-clinic
+git checkout staging
 
 # ... faça suas alterações ...
 
 git add .
 git commit -m "feat: adiciona modelo Clinic"
-git push origin feature/criar-modelo-clinic
+git push origin staging
 
-# No GitHub, crie Pull Request:
-# feature/criar-modelo-clinic → develop
-
-# Depois de testar em develop:
-# develop → staging (testa no Railway staging)
-
-# Se tudo OK:
-# staging → main (vai pra produção!)
+# Depois de validar no Railway staging:
+git checkout main
+git merge staging
+git push origin main
+# Fluxo atual confirmado: staging -> main
 ```
 
 ---
