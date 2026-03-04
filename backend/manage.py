@@ -2,10 +2,16 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+from pathlib import Path
 
 
 def main():
     """Run administrative tasks."""
+    # In Railway/Nixpacks shell, ensure commands use the project virtualenv.
+    venv_python = Path('/opt/venv/bin/python')
+    if venv_python.exists() and Path(sys.executable).resolve() != venv_python:
+        os.execv(str(venv_python), [str(venv_python), __file__, *sys.argv[1:]])
+
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
     try:
         from django.core.management import execute_from_command_line

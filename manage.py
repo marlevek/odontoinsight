@@ -6,6 +6,12 @@ from pathlib import Path
 
 
 def main():
+    # In Railway/Nixpacks shell, ensure management commands run with the app venv
+    # even when user calls `python manage.py ...` directly.
+    venv_python = Path('/opt/venv/bin/python')
+    if venv_python.exists() and Path(sys.executable).resolve() != venv_python:
+        os.execv(str(venv_python), [str(venv_python), __file__, *sys.argv[1:]])
+
     project_root = Path(__file__).resolve().parent
     backend_dir = project_root / 'backend'
 
