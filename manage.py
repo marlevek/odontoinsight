@@ -11,7 +11,7 @@ def main():
     if venv_python.exists() and Path(sys.executable).resolve() != venv_python:
         os.execv(str(venv_python), [str(venv_python), __file__, *sys.argv[1:]])
 
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.local')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings.production')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
