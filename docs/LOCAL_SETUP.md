@@ -50,7 +50,7 @@ CREATE DATABASE odontoinsight;
 CREATE USER odontouser WITH PASSWORD 'suasenha123';
 ALTER ROLE odontouser SET client_encoding TO 'utf8';
 ALTER ROLE odontouser SET default_transaction_isolation TO 'read committed';
-ALTER ROLE odontouser SET timezone TO 'America/Sao_Paulo';
+ALTER ROLE odontouser SET timezone TO 'UTC';
 GRANT ALL PRIVILEGES ON DATABASE odontoinsight TO odontouser;
 \q
 ```
@@ -71,7 +71,7 @@ DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
 
 # Django
-SECRET_KEY=cole-sua-secret-key-aqui
+SECRET_KEY=cole-generate-new-secret-key
 
 # Database
 DB_ENGINE=django.db.backends.postgresql
