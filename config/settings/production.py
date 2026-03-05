@@ -3,9 +3,7 @@ from .base import *  # noqa: F401,F403
 DJANGO_ENV = "production"
 DEBUG = False
 
-DATABASE_URL = config("DATABASE_URL", default="")
-if not DATABASE_URL:
-    raise ValueError("DATABASE_URL is required for production environment")
+DATABASE_URL = config("DATABASE_URL")
 
 DATABASES = {
     "default": dj_database_url.parse(
