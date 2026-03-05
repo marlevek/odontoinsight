@@ -1,4 +1,5 @@
 from .base import *  # noqa: F401,F403
+import dj_database_url
 
 DJANGO_ENV = "staging"
 DEBUG = False
