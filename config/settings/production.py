@@ -1,9 +1,11 @@
 from .base import *  # noqa: F401,F403
+import os 
+
 
 DJANGO_ENV = "production"
 DEBUG = False
 
-DATABASE_URL = config("DATABASE_URL")
+DATABASE_URL = os.getenve('DATABASE_URL')
 
 DATABASES = {
     "default": dj_database_url.parse(

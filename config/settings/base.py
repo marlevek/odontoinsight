@@ -4,7 +4,6 @@ Base Django settings for OdontoInsight.
 
 from pathlib import Path
 
-import dj_database_url
 from decouple import Csv, config
 
 
