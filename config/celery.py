@@ -5,8 +5,18 @@ import os
 from celery import Celery
 from celery.schedules import crontab
 
-# Set the default Django settings module for the 'celery' program.
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+# Choose settings module from DJANGO_ENV to avoid importing generic
+# config.settings during package bootstrap (which can force local settings).
+django_env = os.getenv("DJANGO_ENV", "local").strip().lower()
+settings_module_by_env = {
+    "local": "config.settings.local",
+    "staging": "config.settings.staging",
+    "production": "config.settings.production",
+}
+os.environ.setdefault(
+    "DJANGO_SETTINGS_MODULE",
+    settings_module_by_env.get(django_env, "config.settings.local"),
+)
 
 app = Celery('odontoinsight')
 
